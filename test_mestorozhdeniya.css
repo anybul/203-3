@@ -1,0 +1,334 @@
+.map-of-russia{
+	background-image:url(img/map.jpg);
+    width: 853px;
+    height: 495px;
+    top: 88px;
+    left: 59px;
+}
+.mestorozhdenie{width:20px;height:20px;background-position:center center;background-repeat:no-repeat;position:absolute;}
+.mestorozhdenie:hover{
+	cursor:pointer;
+	width: 36px;
+    height: 36px;
+    margin-top: -8px;
+    margin-left: -8px;
+	z-index:1;
+	background-color:#FFE76B;
+	border-radius:18px;
+	-moz-border-radius:18px;
+	-webkit-border-radius:18px;
+}
+#field.finished .mestorozhdenie:hover{
+	z-index:0;
+	cursor:default;
+	background-color:transparent;
+}
+.mestorozhdenie.mestorozhdenie-wrong,.mestorozhdenie.mestorozhdenie-wrong:hover{
+	width: 36px;
+    height: 36px;
+    margin-top: -8px;
+    margin-left: -8px;
+	z-index:1;
+	background-color:#F58251;
+	border-radius:18px;
+	-moz-border-radius:18px;
+	-webkit-border-radius:18px;
+}
+.mestorozhdenie.mestorozhdenie-right, .mestorozhdenie.mestorozhdenie-right:hover{
+	width: 36px;
+    height: 36px;
+    margin-top: -8px;
+    margin-left: -8px;
+	background-color:#21DED5;
+	z-index:2;
+	border-radius:18px;
+	-moz-border-radius:18px;
+	-webkit-border-radius:18px;
+
+}
+#field.finished .mestorozhdenie.mestorozhdenie-right{
+	transition-duration:1s;
+	margin-left: -60px;
+    margin-top: -48px;
+    width: 140px;
+    height: 140px;
+	border-radius:70px;
+	background-color:#21DED5;
+	-moz-border-radius:70px;
+	-webkit-border-radius:70px;
+	z-index:3;
+}
+.oilfield{
+	background-image:url(img/neft.png);
+	background-size:10px;
+}
+.mestorozhdenie.mestorozhdenie-right.oilfield{
+	background-image:url(img/neft_final.png);
+}
+#field.finished .mestorozhdenie.mestorozhdenie-right.oilfield{
+	background-position: center 20px;
+	background-size:48px;
+}
+.mestorozhdenie.mestorozhdenie-right.oilfield:before{
+	position:absolute;
+	display:block;
+	width:100%;
+	text-align:center;
+	font-size:0px;
+	content:'нефть';
+	bottom:5px;
+}
+#field.finished .mestorozhdenie.mestorozhdenie-right.oilfield:before{
+	transition-delay:0.8s;
+	bottom:25px;
+	font-size:25px;
+
+}
+.gasfield{background-image:url(img/prirod_gaz.png);background-size:11px;}
+.coalfield{background-image:url(img/kamen_ugol.png);background-size:12px;}
+.lignitefield{background-image:url(img/buruy_ugol.png);background-size:12px;}
+.ironstonefield{background-image:url(img/gelez_ruda.png);background-size:12px;}
+#mestorozhdenie-message{
+	border: #F5F5EF 10px solid;
+	background-color:#ffffff;
+    position: absolute;
+    width: 154px;
+    height: 82px;
+	padding: 11px;
+	color:#F58251;
+	text-align: center;
+    line-height: 20px;
+	line-height: 19px;
+    font-size: 18px;
+	z-index:2;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow:    0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+	box-shadow:         0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+	display:none;
+}
+#mestorozhdenie-message:before{content:'Так на картах обозначаются месторождения '}
+#mestorozhdenie-message:after{
+	content:'';
+	display:block;
+	position:absolute;
+	width:16px;
+	height:16px;
+	background-image:url(img/message_tail.png);
+	background-size:16px;
+	background-repeat:no-repeat;
+	bottom: -24px;
+    left: 76px;
+}
+
+#oilfield0{
+	top: 351px;
+    left: 89px;
+}
+#oilfield1{
+	top: 401px;
+    left: 119px;
+}
+#oilfield2{
+	top: 347px;
+    left: 264px;
+}
+#oilfield3{
+	top: 244px;
+    left: 335px;
+}
+#oilfield4{
+	top: 268px;
+    left: 346px;
+}
+#oilfield5{
+    top: 358px;
+    left: 400px;
+}
+#oilfield6{
+	top: 301px;
+    left: 420px;
+	z-index:1;
+}
+#oilfield7{
+	top: 392px;
+    left: 537px;
+}
+
+#gasfield0{
+    top: 343px;
+    left: 103px;
+}
+#gasfield1{
+    top: 347px;
+    left: 185px;
+}
+#gasfield2{
+	top: 192px;
+    left: 343px;
+}
+#gasfield3{
+	top: 240px;
+    left: 344px;
+}
+#gasfield4{
+    top: 224px;
+    left: 407px;
+}
+#gasfield5{
+    top: 261px;
+    left: 409px;
+}
+
+#gasfield6{
+    top: 301px;
+    left: 409px;
+}
+#gasfield7{
+    top: 366px;
+    left: 409px;
+}
+#gasfield8{
+    top: 281px;
+    left: 424px;
+}
+#gasfield9{
+    top: 304px;
+    left: 430px;
+}
+#gasfield10{
+    top: 393px;
+    left: 586px;
+}
+
+#gasfield11{
+    top: 327px;
+    left: 628px;
+}
+#gasfield12{
+    top: 373px;
+    left: 788px;
+}
+
+#coalfield0{
+    top: 345px;
+    left: 129px;
+}
+#coalfield1{
+    top: 269px;
+    left: 374px;
+}
+#coalfield2{
+    top: 445px;
+    left: 447px;
+}
+#coalfield3{
+    top: 291px;
+    left: 469px;
+}
+#coalfield4{
+    top: 473px;
+    left: 555px;
+}
+#coalfield5{
+    top: 245px;
+    left: 597px;
+}
+#coalfield6{
+    top: 393px;
+    left: 654px;
+}
+#coalfield7{
+    top: 319px;
+    left: 662px;
+}
+#coalfield8{
+     top: 258px;
+    left: 683px;
+}
+#coalfield9{
+    top: 253px;
+    left: 732px;
+}
+#coalfield10{
+    top: 149px;
+    left: 781px;
+}
+#coalfield11{
+    top: 406px;
+    left: 814px;
+}
+
+#lignitefield0{
+    top: 492px;
+    left: 576px;
+}
+#lignitefield1{
+    top: 251px;
+    left: 623px;
+}
+#lignitefield2{
+    top: 480px;
+    left: 629px;
+}
+#lignitefield3{
+    top: 440px;
+    left: 706px;
+}
+#lignitefield4{
+    top: 460px;
+    left: 727px;
+}
+#lignitefield5{
+    top: 467px;
+    left: 791px;
+}
+#lignitefield6{
+    top: 393px;
+    left: 806px;
+}
+
+#ironstonefield0{
+    top: 284px;
+    left: 145px;
+}
+#ironstonefield1{
+    top: 220px;
+    left: 244px;
+}
+#ironstonefield2{
+    top: 190px;
+    left: 252px;
+}
+#ironstonefield3{
+    top: 173px;
+    left: 288px;
+}
+#ironstonefield4{
+    top: 326px;
+    left: 299px;
+}
+#ironstonefield5{
+    top: 486px;
+    left: 440px;
+}
+#ironstonefield6{
+    top: 467px;
+    left: 456px;
+}
+#ironstonefield7{
+    top: 445px;
+    left: 485px;
+}
+#ironstonefield8{
+    top: 434px;
+    left: 553px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
+	.oilfield{background-image:url(img/neft@2x.png);}
+	.gasfield{background-image:url(img/prirod_gaz@2x.png);}
+	.coalfield{background-image:url(img/kamen_ugol@2x.png);}
+	.lignitefield{background-image:url(img/buruy_ugol@2x.png);}
+	.ironstonefield{background-image:url(img/gelez_ruda@2x.png);}
+	#mestorozhdenie-message:after{background-image:url(img/message_tail@2x.png);}
+}

@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=960">
+    <link href="style.css" rel="stylesheet" type="text/css">
+	<link href="test_mestorozhdeniya.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="production.min.js"></script>
+	<script type="text/javascript" src="test_mestorozhdeniya.js"></script>
+
+<style type="text/css">
+#field.finished #checkButton{
+	display:none;
+}
+#field{
+	/*background-image:url(source/203-4_step2-ошибка.png);background-size:100%;*/
+}
+#description{z-index:1;}
+@-webkit-keyframes clickable-right-anim{
+    0% {
+        background-color: #4df0e5;
+        box-shadow: 0 0 0 2px #a4f8f2;
+    }
+    100% {
+        background-color: #ffffff;
+        box-shadow: #a4f8f2 0 0 8px 2px;
+    }
+}
+@keyframes clickable-right-anim{
+    0% {
+        background-color: #4df0e5;
+        box-shadow: 0 0 0 2px #a4f8f2;
+    }
+    100% {
+        background-color: #ffffff;
+        box-shadow: #a4f8f2 0 0 8px 2px;
+    }
+}
+#mestorozhdenie-message{font-weight:bold;}
+.clickable{
+	width:214px;
+	height:129px;
+	cursor:pointer;
+    left: 33px;
+}
+#clickable1{
+    top: 161px;
+}
+#clickable2{
+    top: 312px;
+}
+.clickable .inner-element{
+	position: relative;
+	font-size: 28px;
+	line-height: 29px;
+	width:178px;
+	height:125px;
+	cursor:pointer;
+	display: table-cell;
+    vertical-align: middle;
+	text-align:center;
+	/*color:#04A094;*/
+	padding-left:17px;
+}
+
+#field[data-task="2"] #image0{
+	width:960px;
+	height:600px;
+	left:0px;
+	top:0px;
+	background-image:url(img/bgpicture.png);
+	background-size: 100%;
+	background-position:center center;
+}
+
+#field[data-task="2"].finished #image0, 
+#field[data-task="5"].finished #image0{/**/
+	/*width: 630px;
+    height: 385px;
+    left: 270px;
+    top: 95px;*/
+	width: 685px;
+    height: 563px;
+    left: 249px;
+	transition-duration:1s;
+}
+#field[data-task="2"].finished .clickable{
+	opacity:0;
+	transition-duration:0.5s;
+}
+#field[data-task="3"] #image0,#field[data-task="6"] #image0{
+	/*width:750px;
+	height:530px;
+	left:210px;*/
+	width: 685px;
+    height: 563px;
+    left: 249px;
+	background-image:url(img/bgpicture.png);/* bgpicture2 */
+}
+.burustanovka-droparea{
+	/* border:red 1px solid; */
+	width: 630px;
+    height: 385px;
+    left: 270px;
+    top: 95px;
+    position: absolute;
+}
+.burustanovka{
+	position:absolute!important;
+	z-index:1;
+	background-size:100%;
+	cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+	padding:28px;
+}
+.burustanovka.ui-draggable-dragging{
+	cursor: move;
+	cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+#burustanovka-animation{
+	width: 191px;
+    height: 440px;
+    top: 64px;
+    margin-left: -6px;
+	opacity:0;
+	cursor:default;
+}
+#burustanovka-animation:before,#burustanovka-animation:after{
+	display:block;
+	position:absolute;
+	width:100%;
+	height:100%;
+	background-size:100%;
+	background-repeat:no-repeat;
+	top: 0px;
+	left:0px;
+}
+#burustanovka-animation:before{
+	background-image:url(img/burustanovka.gif);
+    height: 398px;
+    width: 148px;
+    top: 37px;
+    left: 21px;
+}
+#burustanovka-animation:after{
+	background-image:url(img/burustanovka-wrong.gif);
+	height: 398px;
+    width: 182px;
+}
+
+#burustanovka-animation:before{opacity:1}
+#burustanovka-animation:after{opacity:0}
+#burustanovka-animation.burustanovkaanim-wrong:before{opacity:0}
+#burustanovka-animation.burustanovkaanim-wrong:after{
+
+	opacity:1;
+	height: 398px;
+	height: 398px;
+    top: 37px;
+    width: 148px;
+    left: 21px;
+}
+#burustanovka-animation img, #oilpump-animation img{width:1px;height:1px;opacity:0;}
+#burustanovka-animation.active{opacity:1;}
+.burustanovka:before, .burustanovka:after{
+	position:absolute;
+	display:block;
+	background-size:100%;
+	background-repeat:no-repeat;
+	content:'';
+}
+.burustanovka:before{
+	top:20px;
+	left:20px;
+}
+.burustanovka:after{
+	top:28px;
+	left:28px;
+}
+.burustanovka:hover:before, .burustanovka:hover:after{
+
+}
+.burustanovka.ui-draggable-disabled:before{display:none;cursor:default;}
+.burustanovka.ui-draggable-dragging:before{
+	opacity:0.5;
+}
+.burustanovka.ui-draggable-dragging{z-index:2}
+#derrick{
+	width:126px;
+	height:181px;
+	top:192px;
+	left: 2px;
+	/*background-image:url(img/derrick.png);*/
+}
+#derrick:hover:before, #derrick.ui-draggable-dragging:before{
+	width:142px;
+	height:197px;
+	background-image:url(img/derrick-hover.png);
+}
+#derrick:after{
+	
+	width:126px;
+	height:181px;
+	background-image:url(img/derrick.png);
+}
+#drill{
+	width:12px;
+	height:217px;
+	top: 170px;
+    left: 170px;
+	
+}
+#drill.ui-draggable-dragging .antihover{
+	position:absolute;
+	width:200px;
+	height:350px;
+	top:-50px;
+	left:-70px;
+}
+#drill:hover:before,#drill.ui-draggable-dragging:before{
+	width:28px;
+	height:233px;
+	background-image:url(img/drill-hover.png);
+}
+#drill.drill-wrong:hover:before{display:none;}
+#drill:after{
+	width:12px;
+	height:217px;
+	background-image:url(img/drill.png);
+}
+@keyframes elementfadein{
+	0%{opacity:0;}
+	50%{opacity:0;}
+	90%{opacity:1}
+}
+@-webkit-keyframes elementfadein{
+	0%{opacity:0;}
+	50%{opacity:0;}
+	90%{opacity:1}
+}
+@keyframes image0resize{
+	0%{
+		width: 685px;
+		height: 563px;
+		left: 249px;
+	},
+	90%{
+		width: 960px;
+		height: 600px;
+		left: 0px;
+	}
+}
+@-webkit-keyframes image0resize{
+	0%{
+		width: 685px;
+		height: 563px;
+		left: 249px;
+	},
+	90%{
+		width: 960px;
+		height: 600px;
+		left: 0px;
+	}
+}
+
+@keyframes drillwrong{
+	5%{
+		top:120px;
+	}
+	20% {
+		transform:rotate(90deg);
+		top: 188px;
+		left:540px;
+	}
+	70% {
+		transform:rotate(90deg);
+		top: 188px;
+		left:540px;
+	}
+	100%{
+		transform:rotate(0deg);
+		top: 198px;
+		left: 198px;
+	}
+}
+@-webkit-keyframes drillwrong{
+	5%{
+		top:120px;
+	}
+	20% {
+		transform:rotate(90deg);
+		top: 188px;
+		left:540px;
+	}
+	70% {
+		transform:rotate(90deg);
+		top: 188px;
+		left:540px;
+	}
+	100%{
+		transform:rotate(0deg);
+		top: 198px;
+		left: 198px;
+	}
+}
+#drill.drill-wrong{
+	animation: drillwrong 2.5s 1 linear;
+	-webkit-animation: drillwrong 2.5s 1 linear;
+	transition-duration:0.5s;
+}
+.burustanovka.return-to-dp{
+	transition-duration:0.5s;
+	z-index:2
+}
+.burustanovka.burustanovka-hidden{
+	visibility:hidden;
+	cursor:default;
+}
+.burustanovka.burustanovka-ground{
+	width: 371px;
+    height: 50px;
+    top: 399px;
+    left: 429px;
+    cursor:default;
+}
+.burustanovka-ground:after{
+	background-image: url(img/ground.png);
+	width:371px;
+	height:50px;
+}
+#oil-wrong{
+	width: 271px;
+    height: 45px;
+    top: 398px;
+    left: 457px;
+    
+	visibility:hidden;
+}
+#oil-wrong:after{
+	width: 267px;
+    height: 45px;
+	background-image: url(img/oil-wrong.png);
+}
+#oil-not-found{
+    display:none;
+    top: 254px;
+    left: 74px;
+    border: #F5F5EF 10px solid;
+    background-color: #ffffff;
+    position: absolute;
+    width: 115px;
+    height: 38px;
+    padding: 14px 10px 14px 15px;
+    color: #F58251;
+    text-align: left;
+    line-height: 20px;
+    line-height: 19px;
+    font-size: 18px;
+	font-weight:bold;
+    z-index: 2;
+    -webkit-box-shadow: 0 0 2px 0 rgba(0,0,0,0.25);
+    -moz-box-shadow: 0 0 2px 0 rgba(0,0,0,0.25);
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.25);
+}
+#oil-not-found:before{
+	content:'';
+	display:block;
+	position:absolute;
+	right: -24px;
+    top: 22px;
+    width: 15px;
+    height: 17px;
+	background-image:url(img/tail.png);
+	background-size:100%;
+}
+#field[data-task="4"] #image0,#field[data-task="5"] #image0{
+    background-image:url(img/bg.png);
+	width:960px;
+	height:600px;
+    left: 0px;
+
+}
+#field[data-task="4"] #image0, #field[data-task="7"] #image0{
+	-webkit-animation: image0resize 1s 1 linear;
+	animation: image0resize 1s 1 linear;
+}
+#field[data-task="4"] #image1, #field[data-task="4"] #image2, #field[data-task="4"] #image3, #field[data-task="4"] #image4, #field[data-task="4"] #dragNDropContainer{
+	-webkit-animation: elementfadein 2s 1 linear;
+	animation: elementfadein 2s 1 linear;
+}
+/* ,#field[data-task="4"] .draggable,#field[data-task="4"] .droppable */
+#field[data-task="4"] .draggable.draggable-wrong{
+    -webkit-animation: draggable-wrong 1s linear;
+    animation: draggable-wrong 1s linear;
+}
+
+
+#field[data-task="4"] #image1, #field[data-task="5"] #image5{
+	background-image:url(img/line1.svg);
+	width: 63px;
+    height: 501px;
+    top: 38px;
+    left: 506px;
+}
+#field[data-task="4"] #image2, #field[data-task="5"] #image6{
+	background-image:url(img/line2.svg);
+	width: 80px;
+    height: 21px;
+    left: 703px;
+    top: 177px;
+}
+#field[data-task="4"] #image3, #field[data-task="5"] #image7{
+	background-image:url(img/line3.svg);
+	width: 124px;
+    height: 100px;
+    left: 662px;
+    top: 329px;
+}
+#field[data-task="4"] #image4, #field[data-task="5"] #image8{
+	background-image:url(img/line4.svg);
+	width: 124px;
+    height: 200px;
+    top: 384px;
+    left: 661px;
+}
+#field[data-task="4"] .draggable{
+    left: 33px;
+    width: 140px;
+    height: 62px;
+}
+#field[data-task="4"] .droppable{
+    width: 140px;
+    height: 62px;
+    left: 785px;
+}
+#field[data-task="4"] .draggable .inner-element{
+    width: 140px;
+    height: 58px;
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+	font-size: 23px;
+	/* color:#00A095; */
+}
+#field[data-task="4"] #draggable1{top: 22px;}
+#field[data-task="4"] #draggable2{top:98px;}
+#field[data-task="4"] #draggable3{top:173px;}
+#field[data-task="4"] #draggable4{top:250px;}
+#field[data-task="4"] #droppable1{top: 156px;left: 356px;}
+#field[data-task="4"] #droppable2{top: 50px;}
+#field[data-task="4"] #droppable3{top: 243px;}
+#field[data-task="4"] #droppable4{top: 339px;}
+
+#field[data-task="5"] #image1, #field[data-task="5"] #image2, #field[data-task="5"] #image3, #field[data-task="5"] #image4{
+    width: 140px;
+    height: 62px;
+    left: 785px;
+	background-color: rgba(255,255,255,.8);
+	
+	webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+}
+.burustanovka.ui-draggable-disabled{
+	cursor:default;
+}
+
+#field[data-task="5"] .image .inner-element{
+	width: 140px;
+	height: 58px;
+	display:table-cell;
+	text-align:center;
+	vertical-align:middle;
+	font-size: 23px;
+	color:#666666;
+}
+#field[data-task="5"] #image1{top: 256px;left: 356px;}
+#field[data-task="5"] #image2{top: 150px;}
+#field[data-task="5"] #image3{top: 343px;}
+#field[data-task="5"] #image4{top: 439px;}
+
+#oilpump-animation{
+	background-size:100%;
+    width: 324px;
+    height: 245px;
+    top: 66px;
+    left: 486px;
+	opacity:0;
+	cursor:default;
+}
+#oilpump-animation:before{
+	background-size:100%;
+	width: 324px;
+    height: 245px;
+	background-image:url(img/pump-static.png);
+	margin:0px;
+	padding:0px;
+	top:0px;
+	left:0px;
+}
+#oilpump-animation:after{
+	background-size:100%;
+	width: 324px;
+    height: 245px;
+	background-image:url(img/pump-animation.gif);
+	margin:0px;
+	padding:0px;
+	top:0px;
+	left:0px;
+}
+#field.finished #oilpump-animation{
+	opacity:1;
+}
+#field.finished[data-task="6"] .ui-draggable{display:none;}
+
+#oilpumpframe{
+    width: 68px;
+    height: 141px;
+    top: 159px;
+    left: 6px;
+}
+#oilpumpframe.dropped{
+	left: 577px;
+    top: 133px;
+	transition-duration:0.5s;
+}
+#oilpumppipe{
+	width: 6px;
+    height: 175px;
+	left: 104px;
+    top: 170px;
+}
+#oilpumppipe.dropped{
+	left: 687px;
+    top: 256px;
+	transition-duration:0.5s;
+}
+#oilpumpengine{
+	width: 55px;
+    height: 108px;
+	left: 141px;
+    top: 186px;
+}
+#oilpumpengine.dropped{
+	left: 515px;
+    top: 163px;
+	transition-duration:0.5s;
+}
+#oilpumpbeam{
+	width: 174px;
+    height: 103px;
+	left: 3px;
+    top: 314px;
+}
+#oilpumpbeam.dropped{
+	left: 519px;
+    top: 80px;
+    transform: rotate(-16deg);
+	transition-duration:0.5s;
+}
+#oilpumpbeam.beam-wrong{
+	left: 506px;
+    top: 185px;
+    transform: rotate(-14deg);
+	transition-duration:0.5s;
+}
+#oilpumpbeam.beam-wrong:before{display:none;}
+#oilpumpframe:after{background-image:url(img/frame.png);width:68px;height:141px;}
+#oilpumppipe:after{background-image:url(img/pipe.png);width:6px;height:175px;}
+#oilpumpengine:after{background-image:url(img/engine.png);width:55px;height:108px;}
+#oilpumpbeam:after{background-image:url(img/beam.png);width:174px;height:103px;}
+#oilpumpframe:hover:before,#oilpumpframe.ui-draggable-dragging:before{background-image:url(img/frame-hover.png);width:68px;height:141px;padding:8px;}
+#oilpumppipe:hover:before,#oilpumppipe.ui-draggable-dragging:before{background-image:url(img/pipe-hover.png);width:6px;height:175px;padding:8px;}
+#oilpumpengine:hover:before,#oilpumpengine.ui-draggable-dragging:before{background-image:url(img/engine-hover.png);width:55px;height:108px;padding:8px;}
+#oilpumpbeam:hover:before,#oilpumpbeam.ui-draggable-dragging:before{background-image:url(img/beam-hover.png);width:174px;height:103px;padding:8px;}
+
+#field[data-task="6"] #image1{
+	width:18px;
+	height:180px;
+	background-image:url(img/well.png);
+	background-size:100%;
+	top: 296px;
+    left: 709px;
+}
+#field[data-task="6"] #image2{
+	opacity:0;
+	background-image:url(img/well-anim.gif);
+	background-size:100%;
+    width: 853px;
+    height: 455px;
+    left: 212px;
+    top: 21px;
+}
+#field[data-task="6"].finished #image2{opacity:1;}
+#field[data-task="7"] #image0{
+	width:960px;
+	height:600px;
+	left:0px;
+	background-image:url(img/final.png);
+}
+.draggable.clickable-wrong, .draggable.clickable-wrong:hover{border-bottom-color: #f48154;}
+.step{/*display:none;*/z-index:1;}
+.step-7{display:none;}
+.step.fake-step{display:inline-block;z-index:1;background-color:#ffffff;}
+
+#field[data-task="7"] .final-text {
+    opacity: 1;
+}
+#field[data-task="7"] .step{
+	display:none;
+}
+#field[data-task="6"].finished .step{
+	opacity:0;
+	transition-duration:1s;
+}
+@keyframes clickable-wrong {
+    20% {
+        -webkit-box-shadow: 0 0 0 2px #f48154;
+        -moz-box-shadow: 0 0 0 2px #f48154;
+        box-shadow: 0 0 0 2px #f48154;
+        background-color: rgba(255,162,128,1);
+    }
+}
+@-webkit-keyframes clickable-wrong {
+    20% {
+        -webkit-box-shadow: 0 0 0 2px #f48154;
+        -moz-box-shadow: 0 0 0 2px #f48154;
+        box-shadow: 0 0 0 2px #f48154;
+        background-color: rgba(255,162,128,1);
+    }
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
+	#field[data-task="2"] #image0{background-image:url(img/bgpicture@2x.png);}
+	#field[data-task="3"] #image0,#field[data-task="6"] #image0{background-image:url(img/bgpicture@2x.png);}
+
+	#burustanovka-animation:before{background-image:url(img/burustanovka@2x.gif);}
+	#burustanovka-animation:after{background-image:url(img/burustanovka-wrong@2x.gif);}
+
+	#derrick:hover:before{background-image:url(img/derrick-hover@2x.png);}
+	#derrick:after{background-image:url(img/derrick@2x.png);}
+	#drill:hover:before{background-image:url(img/drill-hover@2x.png);}
+	#drill:after{background-image:url(img/drill@2x.png);}
+
+	.burustanovka-ground:after{background-image: url(img/ground@2x.png);}
+	#oil-wrong:after{background-image: url(img/oil-wrong@2x.png);}
+	#oil-not-found:before{background-image:url(img/tail@2x.png);}
+	#field[data-task="4"] #image0,#field[data-task="5"] #image0{
+    background-image:url(img/bg@2x.png);
+
+	#oilpump-animation{background-image:url(img/pump-statin@2x.png);}
+	#oilpump-animation:before{background-image:url(img/pump-animation@2x.png);}
+
+	#oilpumpframe:after{background-image:url(img/frame@2x.png);
+	#oilpumppipe:after{background-image:url(img/pipe@2x.png);
+	#oilpumpengine:after{background-image:url(img/engine@2x.png);}
+	#oilpumpbeam:after{background-image:url(img/beam@2x.png);}
+
+	#oilpumpframe:hover:before{background-image:url(img/frame-hover@2x.png);}
+	#oilpumppipe:hover:before{background-image:url(img/pipe-hover@2x.png);}
+	#oilpumpengine:hover:before{background-image:url(img/engine-hover@2x.png);}
+	#oilpumpbeam:hover:before{background-image:url(img/beam-hover@2x.png);}
+	
+	#field[data-task="6"] #image1{background-image:url(img/well@2x.png);}
+	#field[data-task="6"] #image2{background-image:url(img/well-anim@2x.gif);}
+	#field[data-task="7"] #image0{background-image:url(img/final@2x.png);}
+}
+
+</style>
+
+<script type="text/javascript">
+var preloadimages = [
+	'img/beam.png',
+	'img/beam-hover.png',
+	'img/bg.png',
+	'img/bgpicture.png',
+//	'img/bgpicture2.png',
+	'img/burustanovka.gif',
+	'img/burustanovka-wrong.gif',
+	'img/derrick.png',
+	'img/derrick-hover.png',
+	'img/drill.png',
+	'img/drill-hover.png',
+	'img/engine.png',
+	'img/engine-hover.png',
+	'img/final.png',
+	'img/frame.png',
+	'img/frame-hover.png',
+	'img/ground.png',
+	'img/oil-wrong.png',
+	'img/pipe.png',
+	'img/pipe-hover.png',
+	'img/pump-static.png',
+	'img/pump-animation.gif',
+	'img/well.png',
+	'img/well-anim.gif',
+	
+	'img/beam@2x.png',
+	'img/beam-hover@2x.png',
+	'img/bg@2x.png',
+	'img/bgpicture@2x.png',
+//	'img/bgpicture2@2x.png',
+	'img/burustanovka@2x.gif',
+	'img/burustanovka-wrong@2x.gif',
+	'img/derrick@2x.png',
+	'img/derrick-hover@2x.png',
+	'img/drill@2x.png',
+	'img/drill-hover@2x.png',
+	'img/engine@2x.png',
+	'img/engine-hover@2x.png',
+	'img/final@2x.png',
+	'img/frame@2x.png',
+	'img/frame-hover@2x.png',
+	'img/ground@2x.png',
+	'img/oil-wrong@2x.png',
+	'img/pipe@2x.png',
+	'img/pipe-hover@2x.png',
+	'img/pump-static@2x.png',
+	'img/pump-animation@2x.gif',
+	'img/well@2x.png',
+	'img/well-anim@2x.gif',
+	
+	'img/line1.svg',
+	'img/line2.svg',
+	'img/line3.svg',
+	'img/line4.svg',
+	
+	'img/tail.png',
+	'img/tail@2x.png'
+];
+
+$(document).mousedown(function(){
+    $('.return-to-dp').removeClass('return-to-dp');
+});
+var test_burustanovka = {
+	create:function(){
+		result = [];
+		var errormsg = $('<div>Найти&nbsp;нефть не&nbsp;удалось!</div>');
+		errormsg.attr('id','oil-not-found');
+		result.push(errormsg);
+		var anim = $('<div></div>').addClass('burustanovka');
+		anim.attr('id','burustanovka-animation');
+		animimg = $('<img>');
+		animimg.attr('src','img/burustanovka.gif');
+		animimg.attr('id','burustanovkaimg');
+		anim.append(animimg);
+		animimg = $('<img>');
+		animimg.attr('src','img/burustanovka@2x.gif');
+		animimg.attr('id','burustanovkaimg2x');
+		anim.append(animimg);
+		
+		animimg = $('<img>');
+		animimg.attr('src','img/burustanovka-wrong.gif');
+		animimg.attr('id','burustanovkawimg');
+		anim.append(animimg);
+		animimg = $('<img>');
+		animimg.attr('src','img/burustanovka-wrong@2x.gif');
+		animimg.attr('id','burustanovkawimg2x');
+		anim.append(animimg);
+		
+		result.push(anim);
+		
+		var derrick = $('<div></div>').addClass('burustanovka');
+		derrick.attr('id', 'derrick');
+		derrick.draggable({
+			stop:test_burustanovka.stop
+		});
+		result.push(derrick);
+		
+		var drill = $('<div></div>').addClass('burustanovka');
+		drill.attr('id', 'drill');
+		drill.append($('<div></div>').addClass('antihover'));
+		drill.draggable({
+			stop:test_burustanovka.stop
+		});
+		result.push(drill);
+		var droparea = $('<div></div>').addClass('burustanovka-droparea');
+		droparea.droppable({
+			drop:function(e,ui){
+				var draggable = ui.draggable;
+				if(draggable.attr('id')=='derrick'){
+					draggable.css('top','90px');
+					$('#burustanovka-animation').css('left', draggable.css('left'));
+					draggable.addClass('dropped');
+				} else if(draggable.attr('id')=='drill'){
+					if($('#derrick').hasClass('dropped')){
+						if($('#burustanovka-animation').position().left<397 || $('#burustanovka-animation').position().left>657){
+							$('#burustanovka-animation').addClass('burustanovkaanim-wrong');
+							$('#burustanovkawimg').attr('src','img/derrick.png');
+							$('#burustanovkawimg2x').attr('src','img/derrick@2x.png');
+							$('#burustanovka-animation').addClass('active');
+							$('#burustanovkawimg').attr('src','img/burustanovka-wrong.gif');
+							$('#burustanovkawimg2x').attr('src','img/burustanovka-wrong@2x.gif');
+						} else {
+							$('#burustanovka-animation').removeClass('burustanovkaanim-wrong');
+							$('#burustanovkaimg').attr('src','img/derrick.png');
+							$('#burustanovkaimg2x').attr('src','img/derrick@2x.png');
+							$('#burustanovka-animation').addClass('active');
+							$('#burustanovkaimg').attr('src','img/burustanovka.gif');
+							$('#burustanovkaimg2x').attr('src','img/burustanovka@2x.gif');
+						}
+						
+						
+						$('#derrick').addClass('burustanovka-hidden');
+						draggable.css({
+							'left': ($('#burustanovka-animation').position().left + 50)+'px',
+							'top':'198px'
+						});
+						draggable.addClass('dropped').addClass('burustanovka-hidden');
+						setTimeout(function(){
+							if($('#burustanovka-animation').position().left<397 || $('#burustanovka-animation').position().left>657){
+								//console.log('404: oil not found');
+								
+								$('#oil-not-found').show();
+								$('#oil-wrong').css('visibility', 'visible');
+							}
+						}, 2200);
+						
+						if($('#burustanovka-animation').position().left<397 || $('#burustanovka-animation').position().left>657){
+							setTimeout(function(){
+								$('#drill').addClass('return-to-dp').removeClass('burustanovka-hidden');
+								$('#derrick').addClass('return-to-dp').removeClass('burustanovka-hidden');
+								$('#burustanovka-animation').removeClass('active');
+								$('#derrick').removeClass('dropped').css({'top':'','left':''});
+								$('#oil-wrong').css('visibility', '');
+								$('#oil-not-found').hide();
+								$('#drill').removeClass('dropped').css({'top':'','left':''});
+							}, 5000);
+						} else {
+								setTimeout(check, 2000);
+						}
+						
+					} else {
+						draggable.addClass('drill-wrong').draggable('disable');/**/
+						setTimeout(function(d){
+							d.css('top','');
+							d.css('left','');
+							d.removeClass('drill-wrong').draggable('enable');
+						}, 2400, draggable);
+						
+					}
+				}
+			},
+			out:function(e,ui){
+				ui.draggable.removeClass('dropped');
+			}
+		});
+		result.push(droparea);
+		var ground = $('<div></div>').addClass('burustanovka').addClass('burustanovka-ground');
+		result.push(ground);
+		var wrongoil = $('<div></div>').addClass('burustanovka');
+		wrongoil.attr('id','oil-wrong');
+		result.push(wrongoil);
+		return result;
+	},
+	stop:function(e,ui){
+		var draggable = $(e.target);
+		if(!draggable.hasClass('dropped') && !draggable.hasClass('drill-wrong')){
+			draggable.addClass('return-to-dp');
+			draggable.css({'top':'','left':''});
+		}
+	}
+};
+
+var test_oil_pump = {
+	create:function(){
+		var result = [];
+		var anim = $('<div></div>').addClass('burustanovka');
+		anim.attr('id','oilpump-animation');
+		var animimg = $('<img>');
+		animimg.attr('src','img/pump-animation.gif');
+		animimg.attr('id','oilpumpimg');
+		anim.append(animimg);
+		animimg = $('<img>');
+		animimg.attr('src','img/pump-animation@2x.gif');
+		animimg.attr('id','oilpumpimg2x');
+		anim.append(animimg);
+		result.push(anim);
+		
+		var frame = $('<div></div>').addClass('burustanovka');
+		frame.attr('id', 'oilpumpframe');
+		frame.draggable({
+			stop:test_oil_pump.stop
+		});
+		result.push(frame);
+		
+		var pipe = $('<div></div>').addClass('burustanovka');
+		pipe.attr('id', 'oilpumppipe');
+		pipe.draggable({
+			stop:test_oil_pump.stop
+		});
+		result.push(pipe);
+		
+		var engine = $('<div></div>').addClass('burustanovka');
+		engine.attr('id', 'oilpumpengine');
+		engine.draggable({
+			stop:test_oil_pump.stop
+		});
+		result.push(engine);
+		
+		var beam = $('<div></div>').addClass('burustanovka');
+		beam.attr('id', 'oilpumpbeam');
+		beam.draggable({
+			start:function(e,ui){
+				$(e.target).removeClass('beam-wrong').removeClass('return-to-dp');
+			},
+			stop:test_oil_pump.stop
+		});
+		result.push(beam);
+		
+		var droparea = $('<div></div>').addClass('burustanovka-droparea');
+		droparea.droppable({
+			drop:function(e,ui){
+				var draggable = ui.draggable;
+				if(draggable.attr('id')=='oilpumpframe'){
+					draggable.addClass('dropped');
+					draggable.draggable('disable');
+					draggable.css({"top":"","left":""});
+				} else if(draggable.attr('id')=='oilpumpengine'){
+					draggable.addClass('dropped');
+					draggable.draggable('disable');
+					draggable.css({"top":"","left":""});
+				
+				} else if(draggable.attr('id')=='oilpumppipe'){
+					draggable.addClass('dropped');
+					draggable.css({"top":"","left":""});
+					draggable.draggable('disable');
+				} else if(draggable.attr('id')=='oilpumpbeam'){
+					if($('#oilpumpframe').hasClass('dropped') && $('#oilpumpengine').hasClass('dropped')){
+						draggable.addClass('dropped');
+						draggable.css({"top":"","left":""});
+						draggable.draggable('disable');
+					} else {
+						draggable.addClass('beam-wrong').draggable('disable');;
+						draggable.css({"top":"","left":""});
+						setTimeout(function(){
+							$('#oilpumpbeam').addClass('return-to-dp');
+							$('#oilpumpbeam').removeClass('beam-wrong').draggable('enable');;
+						},3000);
+					}
+				}
+				check();
+			},
+			out:function(e,ui){
+				ui.draggable.removeClass('dropped');
+			}
+		});
+		result.push(droparea);
+		return result;
+	},
+	stop:function(e,ui){
+		var draggable = $(e.target);
+		if(!draggable.hasClass('dropped') && !draggable.hasClass('beam-wrong')){
+			draggable.addClass('return-to-dp');
+			draggable.css({'top':'','left':''});
+		}
+	},
+	"check":function(){
+		result = true;
+		$('.burustanovka.ui-draggable').each(function(){
+			if(!$(this).hasClass('dropped')){
+				result = false;
+			}
+		});
+		return result;
+	}
+}
+var test_fakesteps = {
+	"create":function(){
+		var result = [];
+		if(globalVars.currentTask!=2 && globalVars.currentTask!=5){
+			for(var i=0;i<3;i++){
+				var step = $('<div></div>').addClass('step').addClass('fake-step');
+				if(i==0){
+					if(globalVars.currentTask==1){
+						step.addClass('current').html('1');
+					} else {
+						step.addClass('right');
+					}
+					
+				} else if(i==1){
+					if(globalVars.currentTask>5){
+						step.addClass('right');
+					} else {
+						step.html('2');
+						if(globalVars.currentTask>1){
+							step.addClass('current');
+						}
+					}
+				} else if(i==2){
+					if(globalVars.currentTask>7){
+						step.addClass('right');
+					} else {
+						step.html('3');
+						if(globalVars.currentTask>5){
+							step.addClass('current');
+						}
+					}
+				}
+				result.push(step);
+			}
+		}
+		return result;
+	},
+	onFinish:function(){
+		var step = $('.fake-step.current');
+		if(globalVars.currentTask==1 || globalVars.currentTask==4 || globalVars.currentTask==6){
+			step.removeClass('current').addClass('right').addClass('step-animation').html('');
+		}
+	}
+}
+
+var task=[{},
+// step1
+{
+    "description":"Выбери любое месторождение нефти",
+	//"button":{},
+	"nextStepDelay":3000,
+	"test_preloadimg":[],
+//	"test_fakesteps":[],
+	test_mestorozhdeniya:{
+		"right":"oil"
+	}
+	
+
+	
+}, //step2
+{
+	"description":"Чтобы добыть нефть,<br>сначала нужно...",
+	//"test_preloadimg":preloadimages,
+	//"button":{"text":"Продолжить"},
+	"nextStepDelay":1000,
+//	"test_fakesteps":[],
+	"test_images":[
+		{}
+	],
+	"test_clickable":[
+		{"autocheck":true},
+		{"value":"построить буровую установку", "right":true},
+		{"value":"установить насос"}
+	]
+
+	
+},
+//step3
+{
+    "description":"Собери<br>буровую<br>установку",
+	//"test_preloadimg":preloadimages,
+	//"button":{},
+	"nextStepDelay":1000,
+	"test_preloadimg":[],
+//	"test_fakesteps":[],
+	"test_images":[
+		{"style":{}}
+		
+	],
+	"test_burustanovka": []
+},
+//step 4
+{
+	"description":"Подпиши части рисунка",
+	//"test_preloadimg":preloadimages,
+	"button":{"text":"Проверить"},
+	"nextStepDelay":3000,
+//	"test_fakesteps":[],
+	"test_images":[
+		{},
+		{},{},{},{}
+	],
+	"test_drag_n_drop":{
+		"draggables":[
+			{"returnable":"true"},
+			{"value":"бур"},
+			{"value":"скважина"},
+			{"value":"нефтяная вышка"},
+			{"value":"буровая установка"}
+		],
+		"droppables":[
+			{},
+			{"values":["буровая установка"]},
+			{"values":["нефтяная вышка"]},
+			{"values":["бур"]},
+			{"values":["скважина"]}
+		]
+	}
+},
+{
+	"description":"Теперь нужно...",
+	//"test_preloadimg":preloadimages,
+	//"button":{"text":"Продолжить"},
+	"nextStepDelay":700,
+//	"test_fakesteps":[],
+	"test_images":[
+		{},
+		{"value":"буровая установка"},{"value":"нефтяная вышка"},{"value":"бур"},{"value":"скважина"},
+		{},{},{},{}
+	],
+	"test_clickable":[
+		{"autocheck":true},
+		{"value":"построить буровую установку"},
+		{"value":"установить насос", "right":true}
+	]
+},
+{
+    "description":"Собери<br>нефтяной&nbsp;насос",
+	"test_preloadimg":preloadimages,
+	"finalText":"Задание выполнено!",
+	//"button":{},
+	"nextStepDelay":5000,
+	//"test_preloadimg":[],
+//	"test_fakesteps":[],
+	"test_images":[
+		{"style":{}},
+		{},{},{},{ "classes":"burustanovka burustanovka-ground" }
+		
+	],
+	"test_oil_pump": []
+},{
+	"description":"Нефть добыта!",
+	"finalText":"Задание выполнено!",
+	"test_images":[{}]
+}
+]
+</script>
+
+</head>
+<body>
+</body>
+</html>
