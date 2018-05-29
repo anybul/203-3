@@ -16,6 +16,10 @@
 	/*background-image:url(source/203-4_step2-ошибка.png);background-size:100%;*/
 }
 #description{z-index:1;}
+
+.map-of-russia {
+    background-image: url(img/map.jpg);
+}
 @-webkit-keyframes clickable-right-anim{
     0% {
         background-color: #4df0e5;
@@ -271,14 +275,14 @@
 	5%{
 		top:120px;
 	}
-	20% {
+	30% {
 		transform:rotate(90deg);
-		top: 188px;
+		top: 155px;
 		left:540px;
 	}
-	70% {
+	80% {
 		transform:rotate(90deg);
-		top: 188px;
+		top: 155px;
 		left:540px;
 	}
 	100%{
@@ -291,14 +295,14 @@
 	5%{
 		top:120px;
 	}
-	20% {
+	30% {
 		transform:rotate(90deg);
-		top: 188px;
+		top: 155px;
 		left:540px;
 	}
-	70% {
+	80% {
 		transform:rotate(90deg);
-		top: 188px;
+		top: 155px;
 		left:540px;
 	}
 	100%{
@@ -308,8 +312,8 @@
 	}
 }
 #drill.drill-wrong{
-	animation: drillwrong 2.5s 1 linear;
-	-webkit-animation: drillwrong 2.5s 1 linear;
+	animation: drillwrong 1.55s 1 linear;
+	-webkit-animation: drillwrong 1.55s 1 linear;
 	transition-duration:0.5s;
 }
 .burustanovka.return-to-dp{
@@ -512,6 +516,7 @@
 	top:0px;
 	left:0px;
 }
+
 #field.finished #oilpump-animation{
 	opacity:1;
 }
@@ -635,6 +640,12 @@
 }
 
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
+	.map-of-russia {
+        background-image: url(img/map@2x.jpg);
+    }
+	#oilpump-animation:after{
+		background-image:url(img/pump-animation@2x.gif);
+	}
 	#field[data-task="2"] #image0{background-image:url(img/bgpicture@2x.png);}
 	#field[data-task="3"] #image0,#field[data-task="6"] #image0{background-image:url(img/bgpicture@2x.png);}
 
@@ -650,13 +661,13 @@
 	#oil-wrong:after{background-image: url(img/oil-wrong@2x.png);}
 	#oil-not-found:before{background-image:url(img/tail@2x.png);}
 	#field[data-task="4"] #image0,#field[data-task="5"] #image0{
-    background-image:url(img/bg@2x.png);
+        background-image:url(img/bg@2x.png);
+    }
+	#oilpump-animation:before{background-image:url(img/pump-static@2x.png);}
+	/*#oilpump-animation:before{background-image:url(img/pump-animation@2x.png);}*/
 
-	#oilpump-animation{background-image:url(img/pump-statin@2x.png);}
-	#oilpump-animation:before{background-image:url(img/pump-animation@2x.png);}
-
-	#oilpumpframe:after{background-image:url(img/frame@2x.png);
-	#oilpumppipe:after{background-image:url(img/pipe@2x.png);
+	#oilpumpframe:after{background-image:url(img/frame@2x.png);}
+	#oilpumppipe:after{background-image:url(img/pipe@2x.png);}
 	#oilpumpengine:after{background-image:url(img/engine@2x.png);}
 	#oilpumpbeam:after{background-image:url(img/beam@2x.png);}
 
@@ -840,7 +851,7 @@ var test_burustanovka = {
 							d.css('top','');
 							d.css('left','');
 							d.removeClass('drill-wrong').draggable('enable');
-						}, 2400, draggable);
+						}, 1500, draggable);
 						
 					}
 				}
@@ -939,8 +950,8 @@ var test_oil_pump = {
 						draggable.css({"top":"","left":""});
 						setTimeout(function(){
 							$('#oilpumpbeam').addClass('return-to-dp');
-							$('#oilpumpbeam').removeClass('beam-wrong').draggable('enable');;
-						},3000);
+							$('#oilpumpbeam').removeClass('beam-wrong').draggable('enable');
+						},1500);
 					}
 				}
 				check();
